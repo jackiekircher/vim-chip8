@@ -6,13 +6,13 @@ these rules will apply to any `*.8o` file.
 
 ##installation
 
-```
-git clone git@github.com:jackiekircher/vim-chip8.git
-```
-
-clone the repository and copy the files into your Vim directory's
-corresponding ftdetect, syntax, and indent folders. If you prefer to use
-Pathogen then that should work too.
+clone the repository with
+`git clone git@github.com:jackiekircher/vim-chip8.git`
+or download the
+[latest release](https://github.com/jackiekircher/vim-chip8/releases)
+and copy the files into your Vim directory's corresponding ftdetect,
+syntax, and indent folders. If you prefer to use Pathogen then that
+should work too.
 
 
 ##optional keywords
