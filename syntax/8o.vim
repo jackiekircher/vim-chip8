@@ -2,7 +2,7 @@
 " Language:    CHIP-8
 " Maintainer:  jackie kircher
 " Filenames:   *.8o
-" URL:         http://github.com/jackiekircher/chip8-vim
+" URL:         http://github.com/jackiekircher/vim-chip8
 " Last Change: 2014-10-10
 " Version:     0.1
 
