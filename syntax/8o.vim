@@ -21,11 +21,13 @@ syn keyword superChip8Actions   exit
 syn keyword superChip8Functions hires lores bighex saveflags loadflags
 syn keyword superChip8Functions scroll-down scroll-left scroll-right
 
+syn keyword xoChip8Constants long
+
 syn match chip8Comment "#.*$"
 syn match chip8Label   "[-_a-zA-Z0-9]\+" contained
 syn match chip8Number  "\<\d\+\>"
 syn match chip8Number  "\<[-+]\d\+\>"
-syn match chip8Number  "\<0x\x\{1,2}\>"
+syn match chip8Number  "\<0x\x\{1,4}\>"
 syn match chip8Number  "\<0b[0-1]\{1,8}\>"
 
 syn region  chip8Procedure start=":\s" end="\s" contains=chip8Label
@@ -44,3 +46,5 @@ hi def link chip8Number     Number
 
 hi def link superChip8Actions    Statement
 "hi def link superChip8Functions  Function
+
+hi def link xoChip8Constants Constant
