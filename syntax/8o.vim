@@ -19,11 +19,12 @@ syn keyword chip8Functions  bcd save load sprite jump jump0
 
 syn keyword superChip8Actions   exit
 syn keyword superChip8Functions hires lores bighex saveflags loadflags
-syn keyword superChip8Functions scroll-down scroll-left scroll-right
+syn match   superChip8Functions "scroll-\(down\|left\|right\)\s"
 
 syn keyword xoChip8Constants long
 syn keyword xoChip8Actions   audio
 syn keyword xoChip8Functions plane
+syn match   xoChip8Functions "scroll-up"
 
 syn match chip8Comment "#.*$"
 syn match chip8Label   "[-_a-zA-Z0-9]\+" contained

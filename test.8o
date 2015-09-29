@@ -1,3 +1,11 @@
+# SuperChip8
+
+scroll-down  15
+scroll-left   1
+scroll-right  8
+scroll-downwards #shouldn't match
+
+
 #XO-Chip syntax
 
 save v0 - v1
@@ -5,3 +13,4 @@ load v7 - v4
 i := long 0xFFFF
 plane 1
 audio
+scroll-up 15
