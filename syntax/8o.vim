@@ -10,21 +10,15 @@ if exists("b:current_syntax")
   finish
 endif
 
+"let b:superChip = 1
+"let b:xoChip    = 1
+
 syn keyword chip8Actions    return clear
 syn keyword chip8Loops      loop again
 syn keyword chip8Conditions if then
 syn keyword chip8Commands   alias unpack
 syn keyword chip8Constants  const
 syn keyword chip8Functions  bcd save load sprite jump jump0
-
-syn keyword superChip8Actions   exit
-syn keyword superChip8Functions hires lores bighex saveflags loadflags
-syn match   superChip8Functions "scroll-\(down\|left\|right\)\s"
-
-syn keyword xoChip8Constants long
-syn keyword xoChip8Actions   audio
-syn keyword xoChip8Functions plane
-syn match   xoChip8Functions "scroll-up"
 
 syn match chip8Comment "#.*$"
 syn match chip8Label   "[-_a-zA-Z0-9]\+" contained
@@ -35,21 +29,36 @@ syn match chip8Number  "\<0b[0-1]\{1,8}\>"
 
 syn region  chip8Procedure start=":\s" end="\s" contains=chip8Label
 
-
 hi def link chip8Actions    Statement
 hi def link chip8Loops      Repeat
 hi def link chip8Conditions Conditional
 hi def link chip8Commands   Statement
-hi def link chip8Constants  Constant
-"hi def link chip8Functions  Function
-
 hi def link chip8Comment    Comment
+hi def link chip8Constants  Constant
+hi def link chip8Functions  Function
 hi def link chip8Label      Identifier
 hi def link chip8Number     Number
 
-hi def link superChip8Actions    Statement
-"hi def link superChip8Functions  Function
 
-"hi def link xoChip8Actions   Statement
-hi def link xoChip8Constants Constant
-"hi def link xoChip8Functions Function
+" SuperChip instructions
+if exists("b:superChip")
+  syn keyword superChipActions   exit
+  syn keyword superChipFunctions hires lores bighex saveflags loadflags
+  syn match   superChipFunctions "scroll-\(down\|left\|right\)\s"
+
+  hi def link superChipActions    Statement
+  hi def link superChipFunctions  Function
+endif
+
+
+" XO-Chip instructions
+if exists("b:xoChip")
+  syn keyword xoChipActions   audio
+  syn keyword xoChipConstants long
+  syn keyword xoChipFunctions plane
+  syn match   xoChipFunctions "scroll-up"
+
+  hi def link xoChipActions   Statement
+  hi def link xoChipConstants Constant
+  hi def link xoChipFunctions Function
+endif
