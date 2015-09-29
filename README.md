@@ -40,9 +40,10 @@ hi def link superChip8Functions  Function
 
 the XO-Chip adds a variety of new instructions or updates to instructions that
 make working with an extended memory space much easier/possible. to enable these
-uncomment the following line in syntax/8o.vim
+uncomment the following lines in syntax/8o.vim
 
 ```VimL
+hi def link xoChip8Actions   Statement
 hi def link xoChip8Functions Function
 ```
 

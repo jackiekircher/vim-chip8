@@ -4,3 +4,4 @@ save v0 - v1
 load v7 - v4
 i := long 0xFFFF
 plane 1
+audio
