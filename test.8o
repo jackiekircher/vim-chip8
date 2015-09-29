@@ -1,5 +1,24 @@
+: main
+  :unpack
+  :alias foobar v8
+  i := bighex v2
+
+  load v1
+  loop
+    if v1 == 15 then jump v4
+    v1 += 1
+  again
+  save v1
+
+  sprite v1 v2 1
+  clear
+;
+
 : label
 : immediately-following-label
+  jump0
+  bcd
+  return
 
 
 # SuperChip8
