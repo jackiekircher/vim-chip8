@@ -22,6 +22,7 @@ syn keyword superChip8Functions hires lores bighex saveflags loadflags
 syn keyword superChip8Functions scroll-down scroll-left scroll-right
 
 syn keyword xoChip8Constants long
+syn keyword xoChip8Functions plane
 
 syn match chip8Comment "#.*$"
 syn match chip8Label   "[-_a-zA-Z0-9]\+" contained
@@ -48,3 +49,4 @@ hi def link superChip8Actions    Statement
 "hi def link superChip8Functions  Function
 
 hi def link xoChip8Constants Constant
+"hi def link xoChip8Functions Function
