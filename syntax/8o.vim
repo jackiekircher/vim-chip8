@@ -43,10 +43,12 @@ hi def link chip8Number     Number
 " SuperChip instructions
 if exists("b:superChip")
   syn keyword superChipActions   exit
-  syn keyword superChipFunctions hires lores bighex saveflags loadflags
+  syn keyword superChipConstants bighex
+  syn keyword superChipFunctions hires lores saveflags loadflags
   syn match   superChipFunctions "scroll-\(down\|left\|right\)\(\s\|\n\)"
 
   hi def link superChipActions    Statement
+  hi def link superChipConstants  Constant
   hi def link superChipFunctions  Function
 endif
 
