@@ -27,7 +27,7 @@ syn match chip8Number  "\<[-+]\d\+\>"
 syn match chip8Number  "\<0x\x\{1,4}\>"
 syn match chip8Number  "\<0b[0-1]\{1,8}\>"
 
-syn region  chip8Procedure start=":\s" end="\s" contains=chip8Label
+syn region  chip8Procedure start=":\s" end="\(\s\|\n\)" contains=chip8Label
 
 hi def link chip8Actions    Statement
 hi def link chip8Loops      Repeat
@@ -44,7 +44,7 @@ hi def link chip8Number     Number
 if exists("b:superChip")
   syn keyword superChipActions   exit
   syn keyword superChipFunctions hires lores bighex saveflags loadflags
-  syn match   superChipFunctions "scroll-\(down\|left\|right\)\s"
+  syn match   superChipFunctions "scroll-\(down\|left\|right\)\(\s\|\n\)"
 
   hi def link superChipActions    Statement
   hi def link superChipFunctions  Function

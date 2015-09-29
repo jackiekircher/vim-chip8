@@ -1,8 +1,12 @@
+: label
+: immediately-following-label
+
+
 # SuperChip8
 
 scroll-down  15
-scroll-left   1
-scroll-right  8
+scroll-left
+scroll-right
 scroll-downwards #shouldn't match
 
 
