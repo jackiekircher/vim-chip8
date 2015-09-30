@@ -18,16 +18,24 @@ if exists("*Get8oIndent")
   finish
 endif
 
-function! s:prevMatch(lnum, matchString)
+function! s:prevmatch(lnum, startstring, endstring)
   let nline = a:lnum
+  let blockcount = 0
   while nline > 0
     let nline = prevnonblank(nline-1)
-    if getline(nline) =~ a:matchString
-      break
+    let line  = getline(nline)
+
+    if line =~ a:endstring
+      let blockcount += 1
+    elseif line =~ a:startstring
+      let blockcount -= 1
+      if blockcount < 0
+        break
+      endif
     endif
   endwhile
 
-  return nline
+  return indent(nline)
 endfunction
 
 function! Get8oIndent()
@@ -43,11 +51,11 @@ function! Get8oIndent()
 
   " end of a loop
   if currentline =~ '^\s*again'
-    return indent(s:prevMatch(v:lnum, '^\s*loop$'))
+    return s:prevmatch(v:lnum, '^\s*loop', '^\s*again')
 
   " beginning/end of an else clause
   elseif currentline =~ '^\s*\(else\|end\)'
-    return indent(s:prevMatch(v:lnum, '^\s*if.*begin$'))
+    return s:prevmatch(v:lnum, '^\s*if.*begin$', '^\s*end')
 
   " creating a new label
   elseif currentline =~ '^\s*:\s'
