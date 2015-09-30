@@ -1,6 +1,6 @@
 : main
-  :unpack
-  :alias foobar v8
+  :alias  alias v8
+  :unpack bar v7
   i := bighex v2
 
   load v1

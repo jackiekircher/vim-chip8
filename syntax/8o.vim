@@ -16,7 +16,7 @@ endif
 syn keyword chip8Actions    return clear
 syn keyword chip8Loops      loop again
 syn keyword chip8Conditions if then begin else end while
-syn keyword chip8Commands   alias unpack next
+syn keyword chip8Commands   contained alias unpack next
 syn keyword chip8Constants  const buzzer delay key
 syn keyword chip8Functions  bcd save load sprite jump jump0
 
@@ -27,7 +27,8 @@ syn match chip8Number  "\<[-+]\d\+\>"
 syn match chip8Number  "\<0x\x\{1,4}\>"
 syn match chip8Number  "\<0b[0-1]\{1,8}\>"
 
-syn region  chip8Procedure start=":\s" end="\(\s\|\n\)" contains=chip8Label
+syn region chip8CommandWrap start=":"   end="\s"         contains=chip8Commands
+syn region chip8LabelWrap   start=":\s" end="\(\s\|\n\)" contains=chip8Label
 
 hi def link chip8Actions    Statement
 hi def link chip8Loops      Repeat
