@@ -18,23 +18,11 @@ if exists("*Get8oIndent")
   finish
 endif
 
-function! s:prevloop(lnum)
+function! s:prevMatch(lnum, matchString)
   let nline = a:lnum
   while nline > 0
     let nline = prevnonblank(nline-1)
-    if getline(nline) =~ '^\s*loop'
-      break
-    endif
-  endwhile
-
-  return nline
-endfunction
-
-function! s:prevBegin(lnum)
-  let nline = a:lnum
-  while nline > 0
-    let nline = prevnonblank(nline-1)
-    if getline(nline) =~ '^\s*if.*begin$'
+    if getline(nline) =~ a:matchString
       break
     endif
   endwhile
@@ -50,33 +38,44 @@ function! Get8oIndent()
   let currentline   = getline(v:lnum)
   let currentindent = indent(v:lnum)
 
+
   "--- set indent to a specific column ---"
+
   " end of a loop
   if currentline =~ '^\s*again'
-    return indent(s:prevloop(v:lnum))
+    return indent(s:prevMatch(v:lnum, '^\s*loop$'))
+
   " beginning/end of an else clause
   elseif currentline =~ '^\s*\(else\|end\)'
-    return indent(s:prevBegin(v:lnum))
-  " creating a new subroutine
+    return indent(s:prevMatch(v:lnum, '^\s*if.*begin$'))
+
+  " creating a new label
   elseif currentline =~ '^\s*:\s'
     return 0
+
   " closing a subroutine
   elseif currentline =~ '^\s*;'
     return 0
 
+
   "--- indent the next line ---"
-  " subroutines
+
+  " labels
   elseif line =~ '^:\s'
     return indent + &sw
+
   " loops
-  elseif line =~ 'loop'
+  elseif line =~ '^\s*loop$'
     return indent + &sw
-  " if blocks (denoted by 'begin'
+
+  " if blocks (denoted by 'begin')
   elseif line =~ '^\s*if.*begin$'
     return indent + &sw
+
   " else blocks
   elseif line =~ '^\s*else$'
     return indent + &sw
+
 
   " don't change the indent
   else
