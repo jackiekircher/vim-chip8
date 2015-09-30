@@ -68,6 +68,10 @@ function! Get8oIndent()
   elseif line =~ '^\s*loop$'
     return indent + &sw
 
+  " while
+  elseif line =~ '^\s*while\s'
+    return indent + &sw
+
   " if blocks (denoted by 'begin')
   elseif line =~ '^\s*if.*begin$'
     return indent + &sw
