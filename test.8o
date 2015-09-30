@@ -30,6 +30,8 @@
     v1 += v3
   end
 
+: next-label :next
+
 
 # SuperChip8
 
