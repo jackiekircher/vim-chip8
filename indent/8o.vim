@@ -12,7 +12,7 @@ let b:did_indent = 1
 
 setlocal autoindent
 setlocal indentexpr=Get8oIndent()
-setlocal indentkeys=o,O,=,!^F,0=again,0=else,0=end,<:>,0;
+setlocal indentkeys=o,O,=,!^F,0=again,0=else,0=end,<Space>,0;
 
 if exists("*Get8oIndent")
   finish
@@ -58,7 +58,7 @@ function! Get8oIndent()
   elseif currentline =~ '^\s*\(else\|end\)'
     return indent(s:prevBegin(v:lnum))
   " creating a new subroutine
-  elseif currentline =~ '^\s*:'
+  elseif currentline =~ '^\s*:\s'
     return 0
   " closing a subroutine
   elseif currentline =~ '^\s*;'
