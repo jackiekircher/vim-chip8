@@ -20,6 +20,13 @@
   bcd
   return
 
+: else-it-all
+  if v1 == 0 begin
+    v2 += v3
+  else
+    v1 += v3
+  end
+
 
 # SuperChip8
 

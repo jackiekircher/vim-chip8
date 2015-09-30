@@ -12,7 +12,7 @@ let b:did_indent = 1
 
 setlocal autoindent
 setlocal indentexpr=Get8oIndent()
-setlocal indentkeys=o,O,=,!^F,0=again,<:>,0;
+setlocal indentkeys=o,O,=,!^F,0=again,0=else,0=end,<:>,0;
 
 if exists("*Get8oIndent")
   finish
@@ -30,6 +30,18 @@ function! s:prevloop(lnum)
   return nline
 endfunction
 
+function! s:prevBegin(lnum)
+  let nline = a:lnum
+  while nline > 0
+    let nline = prevnonblank(nline-1)
+    if getline(nline) =~ '^\s*if.*begin$'
+      break
+    endif
+  endwhile
+
+  return nline
+endfunction
+
 function! Get8oIndent()
   let pnum   = prevnonblank(v:lnum-1)
   let line   = getline(pnum)
@@ -38,18 +50,35 @@ function! Get8oIndent()
   let currentline   = getline(v:lnum)
   let currentindent = indent(v:lnum)
 
+  "--- set indent to a specific column ---"
+  " end of a loop
   if currentline =~ '^\s*again'
     return indent(s:prevloop(v:lnum))
-  elseif currentline =~ '^\s*;'
-    return 0
+  " beginning/end of an else clause
+  elseif currentline =~ '^\s*\(else\|end\)'
+    return indent(s:prevBegin(v:lnum))
+  " creating a new subroutine
   elseif currentline =~ '^\s*:'
     return 0
+  " closing a subroutine
+  elseif currentline =~ '^\s*;'
+    return 0
 
+  "--- indent the next line ---"
+  " subroutines
   elseif line =~ '^:\s'
     return indent + &sw
+  " loops
   elseif line =~ 'loop'
     return indent + &sw
+  " if blocks (denoted by 'begin'
+  elseif line =~ '^\s*if.*begin$'
+    return indent + &sw
+  " else blocks
+  elseif line =~ '^\s*else$'
+    return indent + &sw
 
+  " don't change the indent
   else
     return -1
   endif
