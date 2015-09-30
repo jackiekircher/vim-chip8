@@ -16,7 +16,7 @@ endif
 syn keyword chip8Actions    return clear
 syn keyword chip8Loops      loop again
 syn keyword chip8Conditions if then begin else end while
-syn keyword chip8Commands   contained alias unpack next
+syn keyword chip8Commands   contained alias unpack next breakpoint
 syn keyword chip8Constants  const buzzer delay key
 syn keyword chip8Functions  bcd save load sprite jump jump0
 

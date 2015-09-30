@@ -8,6 +8,7 @@
     if v1 == 15 then jump v4
     v1 += 1
     while v3 key
+      :breakpoint
       delay  += 1
       buzzer := v1
   again
