@@ -3,8 +3,8 @@
 " Maintainer:  jackie kircher
 " Filenames:   *.8o
 " URL:         http://github.com/jackiekircher/vim-chip8
-" Last Change: 2014-10-10
-" Version:     0.1
+" Last Change: 2015-09-30
+" Version:     1.0
 
 if exists("b:current_syntax")
   finish
