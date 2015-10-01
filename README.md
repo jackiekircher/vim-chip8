@@ -33,7 +33,7 @@ if you want to read more, go to the [SuperChip documentation](https://github.com
 ##XO-Chip
 
 the XO-Chip, much like the SuperChip, adds a variety of new instructions
-that are also backwards compatible with Chip8. This includs new instructions
+that are also backwards compatible with Chip8. This includes new instructions
 or updates to instructions that make working with an extended memory space
 much easier/possible. to enable these uncomment the following line in syntax/8o.vim:
 

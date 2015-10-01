@@ -32,9 +32,9 @@
   end
 
 : next-label :next
+  
 
-
-# SuperChip8
+#SuperChip
 
 scroll-down  15
 scroll-left
